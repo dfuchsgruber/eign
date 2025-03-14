@@ -1,11 +1,19 @@
 """Convolution operator that uses the Laplacian as graph shift operator."""
 
-from typing import Callable
+from typing import Protocol
 
 import torch
 import torch.nn as nn
 
 from eign.laplacian import degree_normalization, magnetic_edge_laplacian
+
+
+class NodeFeatureTransformation(Protocol):
+    """Protocol for node feature transformations."""
+
+    def __call__(
+        self, in_channels: int, out_channels: int, *args, **kwargs
+    ) -> nn.Module: ...
 
 
 class MagneticEdgeLaplacianWithNodeTransformationConv(nn.Module):
@@ -26,7 +34,7 @@ class MagneticEdgeLaplacianWithNodeTransformationConv(nn.Module):
         self,
         in_channels: int,
         out_channels: int,
-        initialize_node_feature_transformation: Callable[[int, int], nn.Module],
+        initialize_node_feature_transformation: NodeFeatureTransformation,
         cached: bool = False,
         bias: bool | None = None,
         normalize: bool = True,
