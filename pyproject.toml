@@ -1,0 +1,41 @@
+[build-system]
+requires = ["setuptools>=61", "wheel", "numpy", "torch"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "eign"
+dynamic = ["version"]
+authors = [
+    { name = "Dominik Fuchsgruber", email = "d.fuchsgruber@tum.de" },
+    { name = "Tim Postuvan", email = "tim.postuvan@epfl.ch" },
+]
+requires-python = ">=3.11"
+license = { text = "MIT" }
+
+dependencies = [
+]
+
+[project.optional-dependencies]
+dev = ["pytest", "ruff", "pre-commit"]
+
+
+[tool.isort]
+profile = "black"
+known_third_party = ["wandb"]
+
+[tool.black]
+line-length = 90
+target-version = ["py311"]
+
+[tool.ruff.lint]
+ignore = ['F722', 'F821']
+
+[tool.ruff.lint.per-file-ignores]
+
+
+[tool.ruff.format]
+quote-style = "single"
+line-ending = "lf"
+
+[tool.pyright]
+typeCheckingMode = "standard"
