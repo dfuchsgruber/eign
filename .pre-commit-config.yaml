@@ -21,11 +21,11 @@ repos:
         name: sort imports with ruff
         args: [--select, I, --fix]
       - id: ruff-format # Run the formatter.
-  # - repo: https://github.com/RobertCraigie/pyright-python
-  #   rev: v1.1.377
-  #   hooks:
-  #     - id: pyright
-  #       files: src/.*\.py|tests/.*\.py
-  #       additional_dependencies:
-  #         - torch
-  #         - numpy
+  - repo: https://github.com/RobertCraigie/pyright-python
+    rev: v1.1.377
+    hooks:
+      - id: pyright
+        files: src/.*\.py|tests/.*\.py
+        additional_dependencies:
+          - torch
+          - numpy
