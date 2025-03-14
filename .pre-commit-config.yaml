@@ -25,7 +25,7 @@ repos:
     rev: v1.1.377
     hooks:
       - id: pyright
-        files: src/eign/.*\.py
+        files: src/eign/.*\.py|tests/.*\.py
         additional_dependencies:
           - torch
           - numpy
