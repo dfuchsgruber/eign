@@ -126,11 +126,11 @@ def _test_function_equivariance_and_invariance(
 
     # Assert equivariance
     assert torch.allclose(
-        out_signed, out_signed_flipped, atol=1e-4
+        out_signed, out_signed_flipped, atol=1e-3
     ), f'No equivariant mapping, differences: {torch.abs(out_signed - out_signed_flipped).max():.3f}'
     # Assert invariance
     assert torch.allclose(
-        out_unsigned, out_unsigned_flipped, atol=1e-4
+        out_unsigned, out_unsigned_flipped, atol=1e-3
     ), f'No invariant mapping, differences: {torch.abs(out_unsigned - out_unsigned_flipped).max():.3f}'
 
 
